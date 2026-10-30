@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -16,8 +16,13 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import InputAdornment from '@mui/material/InputAdornment';
 import { AddCircle } from '@mui/icons-material';
+import PedidosContext from '../providers/context';
 
-function PedidosForm({ onSubmitPedido }) {
+function PedidosForm() {
+
+  const {crearPedidos} = useContext(PedidosContext);
+
+
   const [nombre, setNombre] = useState('');
   const [tipo, setTipo] = useState('');
   const [total, setTotal] = useState('');
@@ -25,13 +30,9 @@ function PedidosForm({ onSubmitPedido }) {
   const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
-  
-    onSubmitPedido({
-      nombre: nombre.trim(),
-      tipo,
-      total: parseFloat(total),
-      medioPago
-    });
+
+    const pedido = {nombre,tipo,total,medioPago};
+    crearPedidos(pedido);
 
     // Resetear formulario
     setNombre('');
