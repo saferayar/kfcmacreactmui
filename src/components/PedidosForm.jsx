@@ -25,8 +25,7 @@ function PedidosForm({ onSubmitPedido }) {
   const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-
+  
     onSubmitPedido({
       nombre: nombre.trim(),
       tipo,
@@ -48,7 +47,7 @@ function PedidosForm({ onSubmitPedido }) {
         <Typography variant="h5" component="h2" gutterBottom fontWeight="bold" color="primary">
           Ingresar Pedido
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 2 }}>
+        <div>
           {/* 1. Nombre del Cliente */}
           <TextField
             fullWidth
@@ -111,7 +110,7 @@ function PedidosForm({ onSubmitPedido }) {
             </RadioGroup>
           </FormControl>
           <Button
-            type="submit"
+            onClick={handleSubmit}
             variant="contained"
             color="primary"
             size="large"
@@ -121,7 +120,7 @@ function PedidosForm({ onSubmitPedido }) {
           >
             Agregar Pedido
           </Button>
-        </Box>
+        </div>
       </CardContent>
     </Card>
   );
