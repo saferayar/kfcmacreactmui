@@ -11,6 +11,7 @@ function App() {
   return (
     <PedidosProvider>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
+       <Header title="KFCMac - Creacion de Órdenes" />
         <HashRouter>
           <Routes>
             <Route path='/' element={<CrearPedidosContainer />}  ></Route> 

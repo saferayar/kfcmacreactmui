@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import PedidosContext from './context';
+import { getPedidos, createPedido } from '../services/pedidos_services';
 
 function PedidosProvider({children}) {
     const [pedidos, setPedidos] = useState([]);
 
     
-    const crearPedidos = (pedido)=>{
-      //TODO: Como llamo a la api pa guardar esto?
+    const crearPedidos = async (pedido)=>{
+      await createPedido(pedido);
       setPedidos([...pedidos, pedido]);
     }
 
@@ -14,8 +15,10 @@ function PedidosProvider({children}) {
       //TODO: como llamo a la api
     }
 
-    const obtenerPedidos = ()=>{
-      //TODO: devolver pedidos desde la api
+    const obtenerPedidos = async ()=>{
+     
+      const pedidos =  await getPedidos();
+      setPedidos(pedidos);
       return pedidos;
     }
 

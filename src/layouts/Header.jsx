@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Fastfood } from '@mui/icons-material';
+import Button from '@mui/material/Button';
 
 function Header({ title = 'KFCMac - Sistema de Pedidos' }) {
   return (
@@ -14,6 +15,8 @@ function Header({ title = 'KFCMac - Sistema de Pedidos' }) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
             {title}
           </Typography>
+          <Button color="inherit"  href='#' >Registrar</Button>
+          <Button color="inherit" href='#ver'>Ver</Button>
         </Toolbar>
       </AppBar>
     </Box>
